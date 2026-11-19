@@ -16,7 +16,7 @@ This setup establishes baseline governance, cost control, and visibility for tea
     *   **Outcome:** Every prompt sent by a developer and every response returned by the AI is automatically recorded in your organization's own BigQuery data warehouse, giving security and compliance teams full ownership and visibility of AI interactions.
 3.  **Token Usage Query**
     *   **Business Need:** Understand AI adoption, track consumption by team member, and forecast costs.
-    *   **Outcome:** Using the included [token usage query](./sql/token-usage-user.sql), FinOps and engineering leaders can generate daily reports showing how many requests and tokens each user consumes per model—helping attribute costs, spot power users, and measure ROI.
+    *   **Outcome:** Using the included [token usage query](./sql/token-usage-user.sql), FinOps and engineering leaders can generate daily reports showing how many requests and tokens each user consumes per model, helping attribute costs, spot power users, and measure ROI.
 
 ---
 
