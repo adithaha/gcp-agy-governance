@@ -4,15 +4,30 @@ This guide walks through executing [setup_logging_allowed_model.sh](./setup_logg
 
 ---
 
+## Business Overview: What This Configuration Does
+
+This setup establishes baseline governance, cost control, and visibility for teams using Google Antigravity in Pay-As-You-Go mode:
+
+1.  **Limit Project to Approved Models**
+    *   **Business Need:** Prevent unexpected AI spend and ensure teams only use vetted, approved models.
+    *   **Outcome:** Developers can only run approved models (such as Gemini 4 Hydrogen, Gemini 3.8 Flash, and earlier versions). Newer, higher-cost, or unapproved third-party models are automatically blocked at the project level.
+2.  **Enable Prompt & Response Logging**
+    *   **Business Need:** Maintain a complete audit trail for security, compliance, and internal review.
+    *   **Outcome:** Every prompt sent by a developer and every response returned by the AI is automatically recorded in your organization's own BigQuery data warehouse, giving security and compliance teams full ownership and visibility of AI interactions.
+3.  **Token Usage Query**
+    *   **Business Need:** Understand AI adoption, track consumption by team member, and forecast costs.
+    *   **Outcome:** Using the included [token usage query](./sql/token-usage-user.sql), FinOps and engineering leaders can generate daily reports showing how many requests and tokens each user consumes per model—helping attribute costs, spot power users, and measure ROI.
+
+---
+
 ## 1. Prerequisites
 
 *   **Tools:** `gcloud` CLI, `bq` CLI, `curl`, and `python3` (available in Google Cloud Shell).
-*   **IAM Permissions on the Target GCP Project / Organization:**
-    *   `roles/owner` (or the specific admin roles below):
-    *   `roles/orgpolicy.policyAdmin` (at the org/folder/project level to set `vertexai.allowedModels`)
-    *   `roles/aiplatform.admin`
-    *   `roles/bigquery.admin`
-    *   `roles/serviceusage.serviceUsageAdmin`
+*   **IAM Permissions Required:**
+    *   `roles/orgpolicy.policyAdmin` — Set and view `constraints/vertexai.allowedModels` *(must be granted at the Organization or Folder level)*
+    *   `roles/aiplatform.admin` — Configure and verify Vertex AI request-response logging (`setPublisherModelConfig` / `fetchPublisherModelConfig`)
+    *   `roles/bigquery.admin` — Create and manage the `antigravity_logs` BigQuery dataset
+    *   `roles/serviceusage.serviceUsageAdmin` — Enable required APIs (`aiplatform`, `bigquery`, `orgpolicy`)
 *   **Authentication:**
     ```bash
     gcloud auth login
