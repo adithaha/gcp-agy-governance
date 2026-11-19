@@ -1,10 +1,10 @@
-# Antigravity PAYG Direct-to-Vertex AI Governance — Setup & Verification Guide
+# Antigravity PAYG AI Governance
 
 This guide walks through executing [setup_logging_allowed_model.sh](./setup_logging_allowed_model.sh) to configure Vertex AI model allowlisting and BigQuery request-response logging for Google Antigravity Pay-As-You-Go (PAYG).
 
 ---
 
-## Business Overview: What This Configuration Does
+## Overview: What This Configuration Does
 
 This setup establishes baseline governance, cost control, and visibility for teams using Google Antigravity in Pay-As-You-Go mode:
 
