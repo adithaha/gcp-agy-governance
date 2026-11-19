@@ -67,3 +67,7 @@ curl -sS -H "Authorization: Bearer $(gcloud auth print-access-token)" \
 1.  **Test allowed model:** Send a prompt in Antigravity (signed in with **Use business account** bound to `${PROJECT_ID}`) using `gemini-3.8-flash` or `gemini-4-hydrogen`.
 2.  **Test disallowed model:** Attempt to call a non-allowlisted model (e.g., `gemini-4-argon` or a 3P Claude model); it should fail with an Organization Policy denial (`constraints/vertexai.allowedModels`).
 3.  **Check BigQuery prompt/response logs:** Google Cloud Console → **BigQuery** → `${PROJECT_ID}.antigravity_logs.gemini_req_resp_logs`.
+
+### 3.4 Query sample
+1.  [Token usage per user daily](https://github.com/adithaha/gcp-agy-governance/blob/main/sql/token-usage-user.sql)
+
