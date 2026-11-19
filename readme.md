@@ -34,6 +34,7 @@ This setup establishes baseline governance, cost control, and visibility for tea
     gcloud config set project YOUR_PROJECT_ID
     ```
 
+### 
 ---
 
 ## 2. Execution Steps
@@ -49,14 +50,14 @@ This setup establishes baseline governance, cost control, and visibility for tea
     ```
 3.  Run the script:
     ```bash
+    # What the Script Provisions
+    # 1.  Enables `aiplatform.googleapis.com`, `bigquery.googleapis.com`, and `orgpolicy.googleapis.com`.
+    # 2.  Applies `constraints/vertexai.allowedModels` to allow only **Gemini 4 Hydrogen (`gemini-4-hydrogen`)**, **Gemini 3.8 Flash (`gemini-3.8-flash`)**, and earlier Gemini models.
+    # 3.  Creates the BigQuery dataset `antigravity_logs`.
+    # 4.  Enables Vertex AI Request-Response Logging (`samplingRate: 1.0`) to BigQuery for every allowed Gemini model.
+
     ./setup_logging_allowed_model.sh
     ```
-
-### What the Script Provisions
-1.  Enables `aiplatform.googleapis.com`, `bigquery.googleapis.com`, and `orgpolicy.googleapis.com`.
-2.  Applies `constraints/vertexai.allowedModels` to allow only **Gemini 4 Hydrogen (`gemini-4-hydrogen`)**, **Gemini 3.8 Flash (`gemini-3.8-flash`)**, and earlier Gemini models.
-3.  Creates the BigQuery dataset `antigravity_logs`.
-4.  Enables Vertex AI Request-Response Logging (`samplingRate: 1.0`) to BigQuery for every allowed Gemini model.
 
 ---
 
